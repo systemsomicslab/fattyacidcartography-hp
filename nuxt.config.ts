@@ -4,7 +4,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       contentfulSpace: process.env.CONTENTFUL_SPACE_ID,
-      contentfulToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      contentfulToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      localeMap: {
+        ja: 'ja-JP',
+        en: 'en-US'
+      }
     }
   },
   i18n: {
