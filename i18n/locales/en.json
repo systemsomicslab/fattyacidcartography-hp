@@ -1,7 +1,13 @@
 {
-  "home": "Home",
-  "research": "Research",
-  "members": "Members",
-  "achievement": "Achievement",
-  "news": "News"
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "research": "Research",
+    "members": "Members",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Understanding the Diversity of Fatty Acid Metabolism and Its Biological Significance",
+    "subtitle": "Supported by MEXT Grant-in-Aid for Scientific Research, Transformative Research Areas (B)"
+  }
 }

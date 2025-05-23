@@ -1,7 +1,13 @@
 {
-  "home": "ホーム",
-  "research": "研究概要",
-  "members": "組織・メンバー",
-  "achievement": "研究成果",
-  "news": "ニュース"
+  "nav": {
+    "home": "ホーム",
+    "news": "ニュース",
+    "research": "研究概要",
+    "members": "組織・メンバー",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "脂肪酸代謝多様性とその生物学的意義の理解",
+    "subtitle": "文部科学省 科学研究費補助金研究 学術変革領域研究（B）"
+  }
 }

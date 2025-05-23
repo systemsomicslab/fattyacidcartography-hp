@@ -1,9 +1,11 @@
 <script setup>
-import { fetchAllNews } from '~/contentful/fetchContent';
+import { fetchNews } from '~/contentful/fetchContent';
 
 const route = useRoute();
 const slug = route.query.slug;
-const { data: newsList } = await useAsyncData('news', () => fetchAllNews());
+
+const { data: newsList } = await useAsyncData('news', async () => await fetchNews());
+
 const news = computed(() => newsList.value?.find(n => n.slug === slug));
 </script>
 
@@ -12,9 +14,10 @@ const news = computed(() => newsList.value?.find(n => n.slug === slug));
     <h1>News</h1>
     <div v-if="news">
       <h2>{{ news.title }}</h2>
-      <p>{{ news.publishDate }}</p>
+      <p>{{ news.date }}</p>
       <div v-html="news.body"></div>
     </div>
-    <div v-else>Loading...</div>
+    <div v-else-if="slug">記事が見つかりません。</div>
+    <div v-else>記事を選択してください。</div>
   </div>
 </template>
