@@ -7,7 +7,9 @@ const props = defineProps<{
 <template>
   <section class="relative bg-cover bg-center bg-no-repeat min-h-[200px] flex flex-col justify-center text-white"
     :style="{ backgroundImage: `url('/images/hero-background.png')` }">
-    <h1 class="text-2xl sm:text-4xl md:text-4xl font-bold mb-2 sm:mb-4 drop-shadow-lg max-w-6xl px-4 md:px-14 mx-auto">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <h1
+      class="text-2xl sm:text-4xl md:text-4xl font-bold mb-2 sm:mb-4 drop-shadow-lg max-w-6xl px-4 md:px-14 mx-auto w-full">
       {{ props.title }}
     </h1>
   </section>

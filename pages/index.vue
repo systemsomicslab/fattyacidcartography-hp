@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overflow-hidden pb-12">
     <HeroSection />
     <ResearchSection />
     <MembersSection />

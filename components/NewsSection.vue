@@ -1,16 +1,19 @@
 <script setup>
 import { fetchNews } from '~/contentful/fetchContent';
+import { createClient as createContentfulClient } from 'contentful';
+import { formatDate } from '~/utils/util';
+import { useI18n } from 'vue-i18n';
 
-const { data: topNews } = await useAsyncData('topNews', async () => await fetchNews(0, 3));
+const { locale } = useI18n();
+const config = useRuntimeConfig();
+const contentfulLocale = config.public.localeMap[locale.value];
 
-function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('ja-JP', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
-}
+const client = createContentfulClient({
+  space: config.public.contentfulSpace,
+  accessToken: config.public.contentfulToken
+})
+
+const { data } = await useAsyncData('topNews', async () => await fetchNews({ skip: 0, limit: 3, client, locale: contentfulLocale }));
 </script>
 
 <template>
@@ -18,14 +21,10 @@ function formatDate(dateStr) {
     <div class="absolute top-16 -left-[40%] w-[100%] h-[65%] min-w-80 bg-[#4ECEEF]/20 -z-10"></div>
     <h2 class="text-2xl md:text-3xl font-bold text-left mb-6">News</h2>
     <div class="grid max-w-4xl">
-      <div v-for="article in topNews" :key="article.slug" class="pb-6">
+      <div v-for="article in data.newsList" :key="article.slug" class="pb-6">
         <p class="text-sm text-gray-500 mb-1">{{ formatDate(article.date) }}</p>
         <NuxtLink :to="`/news?slug=${article.slug}`" class="text-sm md:text-base mb-1 hover:underline">
           {{ article.title }}
-        </NuxtLink>
-        <br>
-        <NuxtLink :to="`/news?category=${article.category}`" class="text-md mb-1 text-[#0B5FA5] hover:underline">
-          {{ article.category }}
         </NuxtLink>
       </div>
     </div>

@@ -1,8 +1,42 @@
-// contentful/fetchContent.ts
-import { createClient as createContentfulClient } from 'contentful';
-import type { EntriesQueries } from 'contentful';
 import { useI18n } from 'vue-i18n';
+import { createClient as createContentfulClient } from 'contentful';
 import { marked } from 'marked';
+
+// fetchContent.ts
+export async function fetchNews({
+  skip = 0,
+  limit = 0,
+  slug = '',
+  client,
+  locale,
+}: {
+  skip?: number
+  limit?: number
+  slug?: string
+  client: any
+  locale: string
+}) {
+  const res = await client.getEntries({
+    content_type: 'news',
+    order: ['-fields.publishDate'],
+    locale,
+    limit: limit || undefined,
+    skip: skip || undefined,
+    'sys.id': slug || undefined
+  })
+
+  const newsList = res.items.map(item => ({
+    title: item.fields.title,
+    slug: item.sys.id,
+    body: typeof item.fields.body === 'string' ? marked.parse(item.fields.body) : null,
+    date: item.fields.publishDate,
+  }))
+
+  return {
+    newsList,
+    total: res.total
+  }
+}
 
 function getContentfulContext() {
   const config = useRuntimeConfig();
@@ -15,25 +49,6 @@ function getContentfulContext() {
   });
 
   return { client, locale: contentfulLocale };
-}
-
-export async function fetchNews(skip = 0, limit = 0) {
-  const { client, locale } = getContentfulContext();
-  const res = await client.getEntries({
-    content_type: 'news',
-    order: ['-fields.publishDate'],
-    locale,
-    limit: limit || undefined,
-    skip: skip || undefined,
-  });
-
-  return res.items.map(item => ({
-    title: item.fields.title,
-    slug: item.sys.id,
-    body: item.fields.body,
-    date: item.fields.publishDate,
-    category: item.fields.category?.fields?.id ?? ''
-  }));
 }
 
 export async function fetchPageContent(title: string) {
