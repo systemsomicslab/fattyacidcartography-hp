@@ -8,7 +8,7 @@ const props = defineProps<{
   <section class="relative bg-cover bg-center bg-no-repeat min-h-[200px] flex flex-col justify-center text-white"
     :style="{
       backgroundImage: `url('/images/hero-background.png')`,
-      boxShadow: 'inset 0 0 9px 4px rgba(0,0,0,0.4)'
+      boxShadow: 'inset 0 0 9px 4px rgba(0,0,0,0.3)'
     }"
   >
     <div class="absolute inset-0 bg-black/10"></div>
