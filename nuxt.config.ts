@@ -1,6 +1,9 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n', '@nuxt/image-edge', '@nuxtjs/tailwindcss'],
+  css: [
+    '@/assets/css/markdown.css',
+  ],
   runtimeConfig: {
     public: {
       contentfulSpace: process.env.CONTENTFUL_SPACE_ID,

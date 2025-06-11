@@ -3,6 +3,7 @@ import { fetchNews } from '~/contentful/fetchContent'
 import { createClient as createContentfulClient } from 'contentful';
 import { formatDate } from '~/utils/util'
 import { useI18n } from 'vue-i18n';
+import LoadingSpinner from '@/components/parts/LoadingSpinner.vue'
 
 const POSTS_PER_PAGE = 10
 
@@ -12,7 +13,7 @@ const slug = computed(() => route.query.slug)
 const page = computed(() => Number(route.query.page) || 1)
 const { locale } = useI18n();
 const config = useRuntimeConfig();
-const contentfulLocale = config.public.localeMap[locale.value];
+const contentfulLocale = computed(() => config.public.localeMap[locale.value]);
 
 const client = createContentfulClient({
   space: config.public.contentfulSpace,
@@ -20,15 +21,18 @@ const client = createContentfulClient({
 })
 
 const { data, pending, error } = useAsyncData(
-  () => `news-${slug.value ?? ''}-${page.value ?? 1}`,
+  () => `news-${slug.value ?? ''}-${page.value ?? 1}-${locale.value}`,
   async () =>
     fetchNews({
       skip: (page.value - 1) * POSTS_PER_PAGE,
       limit: POSTS_PER_PAGE,
       slug: slug.value,
       client,
-      locale: contentfulLocale
-    })
+      locale: contentfulLocale.value
+    }),
+  {
+    watch: [() => locale.value]
+  }
 )
 
 const news = computed(() => slug.value ? data.value?.newsList?.[0] : null)
@@ -47,11 +51,16 @@ const handlePageChange = newPage => {
 
 <template>
   <SubPageHeroSection title="News" />
-  <section class="relative px-4 md:px-14 py-12 max-w-6xl mx-auto mt-8">
-    <div class="absolute top-0 -left-[40%] w-[100%] h-[60%] min-w-80 min-h-[250px] bg-[#4ECEEF]/20 -z-10"></div>
+  <section class="relative px-4 md:px-14 py-4 md:py-12 max-w-6xl mx-auto md:mt-8">
+    <div
+      v-intersect="{ direction: 'left' }"
+      class="absolute top-0 -left-[20%] -left-[20%] md:-left-[40%] w-[100%] h-[500px] min-w-80 min-h-[250px] md:bg-primary-light-blue-opacity -z-10 opacity-0">
+    </div>
 
     <!-- ローディング表示 -->
-    <div v-if="pending">取得中...</div>
+    <div v-if="pending">
+      <LoadingSpinner />
+    </div>
 
     <!-- エラー表示 -->
     <div v-else-if="error">記事の取得に失敗しました</div>
@@ -60,7 +69,7 @@ const handlePageChange = newPage => {
     <div v-else-if="news">
       <h2 className="text-lg font-bold">{{ news.title }}</h2>
       <p className="text-sm text-gray-700">{{ formatDate(news.date) }}</p>
-      <div className="mt-4 pb-8" v-html="news.body"></div>
+      <div className="mt-4 pb-8 prose prose-neutral max-w-none" v-html="news.body"></div>
     </div>
 
     <!-- slugが指定されていて記事がない場合 -->

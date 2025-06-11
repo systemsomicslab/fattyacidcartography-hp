@@ -2,7 +2,6 @@ import { useI18n } from 'vue-i18n';
 import { createClient as createContentfulClient } from 'contentful';
 import { marked } from 'marked';
 
-// fetchContent.ts
 export async function fetchNews({
   skip = 0,
   limit = 0,
@@ -53,6 +52,7 @@ function getContentfulContext() {
 
 export async function fetchPageContent(title: string) {
   const { client, locale } = getContentfulContext();
+  const { $marked } = useNuxtApp();
   const res = await client.getEntries({
     content_type: 'page',
     'fields.title': title,
@@ -60,11 +60,13 @@ export async function fetchPageContent(title: string) {
   });
 
   const body = res.items[0]?.fields?.body;
-  return typeof body === 'string' ? marked.parse(body) : null;
+  return typeof body === 'string' ? $marked.parse(body) : null;
 }
 
 export async function fetchMembers(isForTop: boolean) {
   const { client, locale } = getContentfulContext();
+  const { $marked } = useNuxtApp();
+
   const params: any = {
     content_type: 'member',
     locale,
@@ -76,7 +78,7 @@ export async function fetchMembers(isForTop: boolean) {
   return res.items.map((item) => {
     item.fields.image = item.fields.image?.fields?.file?.url;
     const profileText = item.fields.text
-    const parsedText = typeof profileText === 'string' ? marked.parse(profileText) : null
+    const parsedText = typeof profileText === 'string' ? $marked.parse(profileText) : null
     item.fields.text = typeof parsedText === 'string' ? parsedText : null
     return item.fields
   });

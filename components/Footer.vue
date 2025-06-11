@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full border-t border-gray-200 mt-12 pb-8 pt-8 bg-white">
+  <footer class="w-full border-t border-gray-200 mt-2 md:mt-12 pb-8 pt-8 bg-white">
     <div class="max-w-5xl mx-auto flex flex-col items-center px-4">
       <!-- ロゴ群 -->
       <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mb-6 w-full">

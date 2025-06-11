@@ -1,3 +1,7 @@
+<script>
+export const HEADER_HEIGHT_PC = 64
+</script>
+
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -5,6 +9,19 @@ const { locale } = useI18n()
 const nuxtApp = useNuxtApp()
 const availableLocales = nuxtApp.$i18n.locales
 const selectedLocale = ref(locale.value)
+const isScrolled = ref(false)
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > HEADER_HEIGHT_PC
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 
 function switchLocale() {
   const setLocale = nuxtApp.$i18n?.setLocale
@@ -24,10 +41,10 @@ function closeMenu() {
 </script>
 
 <template>
-  <header class="bg-white border-b shadow-sm z-50 relative">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+  <header class="bg-white border-b shadow-s z-50 fixed top-0 left-0 w-full">
+    <div class="max-w-7xl mx-auto flex items-center px-4 py-3 transition-all duration-300 justify-between">
       <!-- ロゴ -->
-      <NuxtLink to="/" class="flex items-center space-x-2">
+      <NuxtLink to="/" class="flex items-center space-x-2 transition-all duration-300 mr-8">
         <img src="/images/logo.png" alt="Logo" class="h-10 w-auto" />
         <span class="font-semibold text-base sm:text-lg tracking-tight text-gray-700">
           Fatty Acid Diversity & Biology
@@ -45,19 +62,24 @@ function closeMenu() {
 
       <!-- PCナビ -->
       <nav class="hidden md:flex items-center space-x-8">
-        <NuxtLink to="/" class="font-semibold text-[#0B5FA5] text-sm transition-colors">
+        <NuxtLink :to="$localePath('/')"
+          class="font-semibold text-link-color text-sm transition-colors whitespace-nowrap">
           {{ $t('nav.home') }}
         </NuxtLink>
-        <NuxtLink to="/research" class="font-semibold text-[#0B5FA5] text-sm transition-colors">
+        <NuxtLink :to="$localePath('/research')"
+          class="font-semibold text-link-color text-sm transition-colors whitespace-nowrap">
           {{ $t('nav.research') }}
         </NuxtLink>
-        <NuxtLink to="/members" class="font-semibold text-[#0B5FA5] text-sm transition-colors">
+        <NuxtLink :to="$localePath('/members')"
+          class="font-semibold text-link-color text-sm transition-colors whitespace-nowrap">
           {{ $t('nav.members') }}
         </NuxtLink>
-        <NuxtLink to="/news" class="font-semibold text-[#0B5FA5] text-sm transition-colors">
+        <NuxtLink :to="$localePath('/news')"
+          class="font-semibold text-link-color text-sm transition-colors whitespace-nowrap">
           {{ $t('nav.news') }}
         </NuxtLink>
-        <NuxtLink to="/contact" class="font-semibold text-[#0B5FA5] text-sm transition-colors">
+        <NuxtLink :to="$localePath('/contact')"
+          class="font-semibold text-link-color text-sm transition-colors whitespace-nowrap">
           {{ $t('nav.contact') }}
         </NuxtLink>
         <!-- 言語切り替え -->
@@ -83,19 +105,19 @@ function closeMenu() {
             <path d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <NuxtLink to="/" class="font-semibold text-[#0B5FA5]" @click="closeMenu">
+        <NuxtLink :to="$localePath('/')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.home') }}
         </NuxtLink>
-        <NuxtLink to="/research" class="font-semibold text-[#0B5FA5]" @click="closeMenu">
+        <NuxtLink :to="$localePath('/research')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.research') }}
         </NuxtLink>
-        <NuxtLink to="/members" class="font-semibold text-[#0B5FA5]" @click="closeMenu">
+        <NuxtLink :to="$localePath('/members')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.members') }}
         </NuxtLink>
-        <NuxtLink to="/news" class="font-semibold text-[#0B5FA5]" @click="closeMenu">
+        <NuxtLink :to="$localePath('/news')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.news') }}
         </NuxtLink>
-        <NuxtLink to="/contact" class="font-semibold text-[#0B5FA5]" @click="closeMenu">
+        <NuxtLink :to="$localePath('/contact')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.contact') }}
         </NuxtLink>
         <select v-model="selectedLocale" @change="switchLocale"

@@ -43,7 +43,7 @@ function handlePageChange(page) {
 <template>
   <div class="flex justify-center items-center space-x-2 my-4">
     <!-- 左矢印 -->
-    <button v-if="currentPage !== 1" @click="handlePageChange(1)" class="text-gray-400 hover:text-[#0B5FA5] transition"
+    <button v-if="currentPage !== 1" @click="handlePageChange(1)" class="text-gray-400 hover:text-link-color transition"
       aria-label="最初のページへ">&lt;</button>
     <!-- ページ番号リスト -->
     <ul class="flex space-x-2 mx-2">
@@ -51,13 +51,13 @@ function handlePageChange(page) {
         <button @click="handlePageChange(index)" :class="[
           'w-8 h-8 flex items-center justify-center rounded font-bold text-sm',
           currentPage === index
-            ? 'border border-[#0B5FA5] text-[#0B5FA5]'
-            : 'text-gray-500 hover:text-white hover:bg-[#0B5FA5] transition'
+            ? 'border border-link-color text-link-color'
+            : 'text-gray-500 hover:text-white hover:bg-link-color transition'
         ]">{{ index }}</button>
       </li>
     </ul>
     <!-- 右矢印 -->
     <button v-if="currentPage !== totalPage" @click="handlePageChange(totalPage)"
-      class="text-gray-400 hover:text-[#0B5FA5] transition" aria-label="最後のページへ">&gt;</button>
+      class="text-gray-400 hover:text-link-color transition" aria-label="最後のページへ">&gt;</button>
   </div>
 </template>
