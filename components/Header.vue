@@ -52,7 +52,7 @@ function closeMenu() {
         class="items-center space-x-2 transition-all duration-300 mr-8"
         :class="isScrolled ? 'hidden' : 'hidden md:flex'"
       >
-        <img src="/images/logo.png" alt="Logo" class="h-10 w-auto" />
+        <img :src="`${useRuntimeConfig().app.baseURL}images/logo.png`" alt="Logo" class="h-10 w-auto" />
         <span class="font-semibold text-base sm:text-lg tracking-tight text-gray-700">
           Fatty Acid Diversity & Biology
         </span>
@@ -114,7 +114,7 @@ function closeMenu() {
             class="flex items-center space-x-2 transition-all duration-300 mr-8"
              @click="closeMenu"
           >
-            <img src="/images/logo.png" alt="Logo" class="h-10 w-auto" />
+            <img :src="`${useRuntimeConfig().app.baseURL}images/logo.png`" alt="Logo" class="h-10 w-auto" />
             <span class="font-semibold text-sm tracking-tight text-gray-700">
               Fatty Acid Diversity & Biology
             </span>

@@ -7,7 +7,7 @@ const props = defineProps<{
 <template>
   <section class="relative bg-cover bg-center bg-no-repeat min-h-[200px] flex flex-col justify-center text-white"
     :style="{
-      backgroundImage: `url('/images/hero-background.png')`,
+      backgroundImage: `url('${useRuntimeConfig().app.baseURL}images/hero-background.png')`,
       boxShadow: 'inset 0 0 9px 4px rgba(0,0,0,0.3)'
     }"
   >
