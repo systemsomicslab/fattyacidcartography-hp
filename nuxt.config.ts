@@ -33,6 +33,6 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    baseURL: '/fattyacidcartography/'
+    baseURL: '/fattyacidcartography-hp/'
   }
 });
