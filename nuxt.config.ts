@@ -27,6 +27,9 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ['/'] // 追加ルートはfetchNews.tsで生成可能
+    },
+    output: {
+      publicDir: './dist'
     }
   },
   app: {
