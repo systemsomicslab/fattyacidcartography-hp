@@ -28,5 +28,8 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/'] // 追加ルートはfetchNews.tsで生成可能
     }
+  },
+  app: {
+    baseURL: '/fattyacidcartography/'
   }
 });
