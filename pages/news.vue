@@ -52,12 +52,11 @@ const handlePageChange = newPage => {
 
 <template>
   <SubPageHeroSection title="News" />
-  <section class="relative px-4 md:px-14 py-4 md:py-12 max-w-6xl mx-auto md:mt-8">
+  <section class="relative px-4 md:px-14 py-4 md:py-12 max-w-6xl mx-auto md:mt-8 min-h-[300px]">
     <div
-      v-intersect="{ direction: 'left' }"
-      class="absolute top-0 -left-[20%] -left-[20%] md:-left-[40%] w-[100%] h-[500px] min-w-80 min-h-[250px] md:bg-primary-light-blue-opacity -z-10 opacity-0">
-    </div>
-
+      v-intersect="{ direction: 'right' }"
+      class="absolute top-0 -right-[40%] w-[100%] h-[500px] min-w-80 min-h-[250px] md:bg-primary-light-green-opacity -z-10 opacity-0"
+    ></div>
     <!-- ローディング表示 -->
     <div v-if="pending">
       <LoadingSpinner />
