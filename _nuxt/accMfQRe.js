@@ -1,1 +1,0 @@
-const t={nav:{home:{t:0,b:{t:2,i:[{t:3}],s:"ホーム"}},news:{t:0,b:{t:2,i:[{t:3}],s:"ニュース"}},research:{t:0,b:{t:2,i:[{t:3}],s:"研究概要"}},members:{t:0,b:{t:2,i:[{t:3}],s:"メンバー"}},contact:{t:0,b:{t:2,i:[{t:3}],s:"問合せ"}}},hero:{title:{t:0,b:{t:2,i:[{t:3}],s:"脂肪酸代謝多様性とその生物学的意義の理解"}},subtitle:{t:0,b:{t:2,i:[{t:3}],s:"文部科学省 科学研究費補助金研究 学術変革領域研究（B）"}}}};export{t as default};
