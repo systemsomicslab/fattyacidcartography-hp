@@ -17,7 +17,8 @@ const { data } = await useAsyncData(
   () => `Top-news-${locale.value}`,
   async () => await fetchNews({ skip: 0, limit: 3, client, locale: contentfulLocale.value }),
   {
-    watch: [() => locale.value]
+    watch: [() => locale.value],
+    server: false
   }
 );
 

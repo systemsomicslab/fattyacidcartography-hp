@@ -7,7 +7,8 @@ const { data: topResearchContent } = await useAsyncData(
   () => `Top-research-${locale.value}`,
   () => fetchPageContent('Top-research'),
   {
-    watch: [() => locale.value]
+    watch: [() => locale.value],
+    server: false
   }
 );
 </script>

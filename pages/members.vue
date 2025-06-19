@@ -7,7 +7,8 @@ const { data: members } = await useAsyncData(
   () => `Members-${locale.value}`,
   async () => await fetchMembers(),
   {
-    watch: [() => locale.value]
+    watch: [() => locale.value],
+    server: false
   }
 );
 </script>

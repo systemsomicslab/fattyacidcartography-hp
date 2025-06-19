@@ -7,7 +7,8 @@ const { data: contactContent } = await useAsyncData(
   () => `Contact-${locale.value}`,
   () => fetchPageContent('Contact'),
   {
-    watch: [() => locale.value]
+    watch: [() => locale.value],
+    server: false
   }
 );
 </script>

@@ -31,7 +31,8 @@ const { data, pending, error } = useAsyncData(
       locale: contentfulLocale.value
     }),
   {
-    watch: [() => locale.value]
+    watch: [() => locale.value],
+    server: false
   }
 )
 
