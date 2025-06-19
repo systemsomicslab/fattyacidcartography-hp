@@ -2,7 +2,7 @@
   <div class="overflow-hidden pb-12">
     <HeroSection />
     <ResearchSection />
-    <MembersSection />
+    <GroupSection />
     <NewsSection />
   </div>
 </template>

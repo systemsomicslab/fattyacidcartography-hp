@@ -77,9 +77,9 @@ function closeMenu() {
           class="font-semibold text-link-color transition-colors whitespace-nowrap">
           {{ $t('nav.research') }}
         </NuxtLink>
-        <NuxtLink :to="$localePath('/members')"
+        <NuxtLink :to="$localePath('/group')"
           class="font-semibold text-link-color transition-colors whitespace-nowrap">
-          {{ $t('nav.members') }}
+          {{ $t('nav.group') }}
         </NuxtLink>
         <NuxtLink :to="$localePath('/news')"
           class="font-semibold text-link-color transition-colors whitespace-nowrap">
@@ -132,8 +132,8 @@ function closeMenu() {
         <NuxtLink :to="$localePath('/research')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.research') }}
         </NuxtLink>
-        <NuxtLink :to="$localePath('/members')" class="font-semibold text-link-color" @click="closeMenu">
-          {{ $t('nav.members') }}
+        <NuxtLink :to="$localePath('/group')" class="font-semibold text-link-color" @click="closeMenu">
+          {{ $t('nav.group') }}
         </NuxtLink>
         <NuxtLink :to="$localePath('/news')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.news') }}

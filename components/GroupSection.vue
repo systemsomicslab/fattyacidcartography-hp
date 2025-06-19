@@ -20,9 +20,11 @@ const { data: members } = await useAsyncData(
       class="absolute top-16 -right-[20%] md:-right-[40%] w-[100%] h-[350px] min-w-80 bg-primary-light-green-opacity -z-10 opacity-0">
     </div>
     <h2 class="text-2xl md:text-3xl font-bold text-right mb-6">
-      <NuxtLink :to="$localePath('/members')"
-        class="hover:text-primary-light-green transition-colors duration-300">
-        Members
+      <NuxtLink
+        :to="$localePath('/group')"
+        class="hover:text-primary-light-green transition-colors duration-300"
+      >
+        Group
       </NuxtLink>
     </h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-6xl mx-auto relative pt-4">
@@ -37,3 +39,37 @@ const { data: members } = await useAsyncData(
     </div>
   </section>
 </template>
+
+<style>
+.groupContent img {
+  max-width: 80%;
+  margin: 16px auto 0;
+  height: auto;
+}
+
+.groupContent .member {
+  display: flex;
+}
+
+.groupContent .member figure {
+  margin-right: 10px;
+}
+
+.groupContent .member img {
+  max-width: 100%;
+  width: 120px;
+  height: 150px;
+  margin: 0;
+  object-fit: cover;
+}
+
+.groupContent figcaption {
+  text-align: center;
+}
+
+@media screen and (max-width: 599px) {
+  .groupContent img {
+    max-width: 100%;
+  }
+}
+</style>
