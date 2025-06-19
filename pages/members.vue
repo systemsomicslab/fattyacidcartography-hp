@@ -21,7 +21,7 @@ const { data: members } = await useAsyncData(
         v-intersect="{ direction: 'right' }"
         class="absolute top-0 -right-[40%] w-[100%] h-[500px] min-w-80 md:bg-primary-light-green-opacity -z-10 opacity-0">
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto relative pt-4">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6 max-w-6xl mx-auto relative pt-4">
         <div v-for="member in members" :key="member.name">
           <div
             class="translate-[12px] w-full aspect-square transition-all duration-300 hover:shadow-[6px_6px_0_2px_#4ECEEF] cursor-pointer hover:translate-x-[-6px] hover:translate-y-[-6px]">
