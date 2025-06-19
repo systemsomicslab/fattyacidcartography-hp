@@ -4,5 +4,6 @@
     <ResearchSection />
     <GroupSection />
     <NewsSection />
+    <ContactSection />
   </div>
 </template>
