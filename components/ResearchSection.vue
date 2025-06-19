@@ -14,7 +14,7 @@ const { data: topResearchContent } = await useAsyncData(
 </script>
 
 <template>
-  <section class="relative px-4 md:px-14 pt-12 md:py-12 max-w-6xl mx-auto ">
+  <section class="relative px-4 md:px-14 pt-12 md:pt-12 pb-4 max-w-6xl mx-auto ">
     <div
       v-intersect="{ direction: 'left' }"
       class="absolute top-16 -left-[20%] md:-left-[40%] w-[100%] h-[350px] min-w-80 bg-primary-light-blue-opacity -z-10 opacity-0"
