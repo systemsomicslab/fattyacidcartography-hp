@@ -85,9 +85,9 @@ function closeMenu() {
           class="font-semibold text-link-color transition-colors whitespace-nowrap">
           {{ $t('nav.news') }}
         </NuxtLink>
-        <NuxtLink :to="$localePath('/contact')"
+        <NuxtLink :to="$localePath('/achievement')"
           class="font-semibold text-link-color transition-colors whitespace-nowrap">
-          {{ $t('nav.contact') }}
+          {{ $t('nav.achievement') }}
         </NuxtLink>
         <!-- 言語切り替え -->
         <select v-model="selectedLocale" @change="switchLocale"
@@ -138,8 +138,8 @@ function closeMenu() {
         <NuxtLink :to="$localePath('/news')" class="font-semibold text-link-color" @click="closeMenu">
           {{ $t('nav.news') }}
         </NuxtLink>
-        <NuxtLink :to="$localePath('/contact')" class="font-semibold text-link-color" @click="closeMenu">
-          {{ $t('nav.contact') }}
+        <NuxtLink :to="$localePath('/achievement')" class="font-semibold text-link-color" @click="closeMenu">
+          {{ $t('nav.achievement') }}
         </NuxtLink>
         <select v-model="selectedLocale" @change="switchLocale"
           class="border rounded px-2 py-1 text-base focus:outline-none mt-4">
