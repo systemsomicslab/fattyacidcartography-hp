@@ -43,7 +43,7 @@ function closeMenu() {
 <template>
   <header class="md:bg-white md:border-b shadow-s z-50 fixed top-0 left-0 w-full">
     <div
-      class="max-w-7xl mx-auto flex items-center px-4 transition-all duration-300 justify-end"
+      class="max-w-7xl mx-auto flex items-center px-4 transition-all duration-300 justify-end gap-4"
       :class="isScrolled ? 'md:justify-center py-2' : 'md:justify-between py-3'"
     >
       <!-- ロゴ -->
@@ -53,8 +53,8 @@ function closeMenu() {
         :class="isScrolled ? 'hidden' : 'hidden md:flex'"
       >
         <img :src="`${useRuntimeConfig().app.baseURL}images/logo.png`" alt="Logo" class="h-10 w-auto" />
-        <span class="font-semibold text-base sm:text-lg tracking-tight text-gray-700">
-          Fatty Acid Diversity & Biology
+        <span class="font-semibold text-base sm:text-lg tracking-tight text-gray-700 whitespace-nowrap">
+          Fatty Acid Cartography
         </span>
       </NuxtLink>
 
@@ -68,7 +68,7 @@ function closeMenu() {
       </button>
 
       <!-- PCナビ -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <nav class="hidden md:flex items-center space-x-6">
         <NuxtLink :to="$localePath('/')"
           class="font-semibold text-link-color transition-colors whitespace-nowrap">
           {{ $t('nav.home') }}
@@ -115,8 +115,8 @@ function closeMenu() {
              @click="closeMenu"
           >
             <img :src="`${useRuntimeConfig().app.baseURL}images/logo.png`" alt="Logo" class="h-10 w-auto" />
-            <span class="font-semibold text-sm tracking-tight text-gray-700">
-              Fatty Acid Diversity & Biology
+            <span class="font-semibold text-sm tracking-tight text-gray-700 whitespace-nowrap">
+              Fatty Acid Cartography
             </span>
           </NuxtLink>
           <button @click="closeMenu" class="self-end mb-4" aria-label="Close menu">
